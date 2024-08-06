@@ -1,0 +1,49 @@
+{
+  "posts": [
+    {
+      "id": "f80c",
+      "first_name": "AnshulTest",
+      "last_name": "Sharma",
+      "email": "a@b.com"
+    },
+    {
+      "id": "f6b9",
+      "first_name": "AnshulUpdate1",
+      "last_name": "Sharma",
+      "email": "a@b.com"
+    },
+    {
+      "id": "28f1",
+      "first_name": "AnshulUpdate3",
+      "last_name": "Sharma",
+      "email": "a@b.com"
+    },
+    {
+      "id": "90ed",
+      "first_name": "AnshulUpdate3",
+      "last_name": "Sharma",
+      "email": "a@b.com"
+    },
+    {
+      "id": "0611",
+      "first_name": "AnshulUpdate4",
+      "last_name": "Sharma",
+      "email": "a@b.com"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": null
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": null
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

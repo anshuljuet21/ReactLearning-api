@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axiosObject from './AxiosConfig'
 
 export class Delete extends Component {
     constructor(props) {
@@ -13,44 +14,85 @@ export class Delete extends Component {
         this.setState({[e.target.name]:e.target.value})
     }
 
-    componentDidMount() {
+   /* componentDidMount() {
       var id = (window.location.pathname.split('/'))[2]
       console.log(id)
-      fetch('https://reqres.in/api/users/' + id, { method: 'GET' })
+      fetch('http://localhost:3200/posts/' + id, { method: 'GET' })
         .then(result => result.json())
         .then(res => {
-          console.log(res.data);
+          console.log(res);
           this.setState({
-            id: res.data.id,
-            first_name: res.data.first_name,
-            last_name: res.data.last_name,
-            email: res.data.email
+            id: res.id,
+            first_name: res.first_name,
+            last_name: res.last_name,
+            email: res.email
           })
         })
         .catch(error => {
           console.error('Error fetching user data:', error)
         })
-    }
+    } */
+
+    componentDidMount() {
+        var id = (window.location.pathname.split('/'))[2]
+        /*  console.log(id)
+         fetch('http://localhost:3200/posts/' + id, { method: 'GET' })
+           .then(result => result.json())
+           .then(res => {
+             console.log(res);
+             this.setState({
+               id: res.id,
+               first_name: res.first_name,
+               last_name: res.last_name,
+               email: res.email
+             })
+           })
+           .catch(error => {
+             console.error('Error fetching user data:', error)
+           }) */
+             axiosObject.get('posts/'+ id)
+             .then(result=>{
+               console.log(result)
+               this.setState({
+                 id:result.data.id,
+                 first_name:result.data.first_name,
+                 last_name:result.data.last_name,
+                 email:result.data.email
+               })
+             })
+       }
     
 
     submitHandler=(e)=>{
         e.preventDefault();
-        console.log(this.state)
-        fetch('https://reqres.in/api/users/'+this.state.id,{method:'Delete',
+      /*  console.log(this.state)
+        fetch('http://localhost:3200/posts/'+this.state.id,{method:'Delete',
          headers:{
             'content-type':'application/json'
          },
          body:JSON.stringify(this.state)
         }).then(res=>{
-            if(res.status==204)
+            if(res.status==200)
             {
                 alert('Record Deleted Successfully')
-                window.location='./'
+                window.location='../'
             }
             else{
                 alert('Deletion failed')
             }
-        })
+        }) */
+            axiosObject.delete('posts/'+this.state.id)
+            .then(result=>{
+                if(result.status==200)
+                    {
+                        alert('Record Deleted Successfully')
+                        window.location='../'
+                    }
+                    else{
+                        alert('Deletion Failed failed')
+                    }
+            })
+
     }
     
   render() {

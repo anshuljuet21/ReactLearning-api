@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import axiosObject from './AxiosConfig';
 
 class Home extends Component {
   constructor(props) {
@@ -9,15 +11,21 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    fetch('https://reqres.in/api/users?page=2', { method: 'GET' })
+    /*fetch('http://localhost:3200/posts', { method: 'GET' })
       .then((result) => result.json())
-      .then((data) => {
-        this.setState({ users: data.data });
+      .then(req => {
+        console.log(req)
+        this.setState({users:req});
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
-      });
-  }
+      }); */
+      axiosObject.get('posts/')
+      .then(result=>{
+        console.log(result.data)
+        this.setState({users:result.data})
+      })
+      }
 
   render() {
     return (

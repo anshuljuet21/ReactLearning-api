@@ -1,4 +1,6 @@
+import axios from 'axios'
 import React, { Component } from 'react'
+import axiosObject from './AxiosConfig'
 
 export class Add extends Component {
     constructor(props) {
@@ -16,7 +18,7 @@ export class Add extends Component {
     submitHandler=(e)=>{
         e.preventDefault();
         console.log(this.state)
-        fetch('https://reqres.in/api/users',{method:'POST',
+       /* fetch('http://localhost:3200/posts',{method:'POST',
          headers:{
             'content-type':'application/json'
          },
@@ -30,6 +32,18 @@ export class Add extends Component {
             else{
                 alert('Update failed')
             }
+        }) */
+
+        axiosObject.post('posts/',(this.state))
+        .then(result=>{
+            if(result.status==201)
+                {
+                    alert('Record added Successfully')
+                    window.location='../'
+                }
+                else{
+                    alert('Update failed')
+                }
         })
     }
     
