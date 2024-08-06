@@ -16,6 +16,21 @@ export class Add extends Component {
     submitHandler=(e)=>{
         e.preventDefault();
         console.log(this.state)
+        fetch('https://reqres.in/api/users',{method:'POST',
+         headers:{
+            'content-type':'application/json'
+         },
+         body:JSON.stringify(this.state)
+        }).then(res=>{
+            if(res.status==201)
+            {
+                alert('Record added Successfully')
+                window.location='./'
+            }
+            else{
+                alert('Update failed')
+            }
+        })
     }
     
   render() {
@@ -43,10 +58,8 @@ export class Add extends Component {
                 </div>
              </div>
             </form>
-        
-      </div>
-      
-    )
+        </div>
+      )
   }
 }
 
