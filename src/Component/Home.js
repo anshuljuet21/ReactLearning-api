@@ -33,6 +33,7 @@ class Home extends Component {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -44,6 +45,11 @@ class Home extends Component {
                 <td>{user.first_name}</td>
                 <td>{user.last_name}</td>
                 <td>{user.email}</td>
+                <td>
+                <a href={`/edit/${user.id}`} className="btn btn-warning">Edit</a>  
+                &nbsp;
+                <a href={`/delete/${user.id}`} className="btn btn-danger">Delete</a>
+                </td>
               </tr>
             ))
             :null
